@@ -19,6 +19,13 @@ app.get("/", function(req, res) {
   res.render("home",{startingContent: homeStartingContent});
 });
 
+app.get("/about", function(req, res) {
+  res.render("about",{aboutPageContent: aboutContent});
+});
+
+app.get("/contact", function(req, res) {
+  res.render("contact",{contactPageContent: contactContent});
+});
 
 app.listen(3000, function() {
   console.log("App server up and running on port 3000.")
