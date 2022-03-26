@@ -10,6 +10,8 @@ const contactContent = "There are many variations of passages of Lorem Ipsum ava
 
 const app = express();
 
+const posts = [];
+
 app.set("view engine", "ejs");
 
 app.use(express.urlencoded({
@@ -21,6 +23,7 @@ app.get("/", function(req, res) {
   res.render("home", {
     startingContent: homeStartingContent
   });
+  console.log(posts);
 });
 
 app.get("/about", function(req, res) {
@@ -40,13 +43,12 @@ app.get("/compose", function(req, res) {
 });
 
 app.post("/compose", function(req, res) {
-  const blogPosts = {
+  const post = {
     title: req.body.postTitle,
     body: req.body.postBody
   };
-
-  console.log(blogPosts);
-  res.redirect("/compose");
+  posts.push(post);
+  res.redirect("/");
 });
 
 app.listen(3000, function() {
